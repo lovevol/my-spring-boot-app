@@ -11,13 +11,13 @@
     <table style="text-align: center">
         <thead>
             <tr>
-                <th th:text="Name"></th>
+                <th th:text="Username"></th>
                 <th th:text="Email"></th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="user : ${users}">
-                <td th:text="${user.name}">noName</td>
+                <td th:text="${user.username}">noName</td>
                 <td th:text="${user.email}">noEmail</td>
             </tr>
         </tbody>
@@ -26,10 +26,14 @@
 <h2>add-user</h2>
 <form method="POST" action="/add">
     <label for="name">Name:</label>
-    <input type="text" name="name" size="50" id="name"/><br/>
+    <input type="text" name="username" size="50" id="name"/><br/>
+    <label for="password">Password:</label>
+    <input type="password" name="password" size="50" id="password"/><br/>
     <label for="email">Email:</label>
     <input type="text" name="email" size="50" id="email"/><br/>
     <input type="submit" value="add"/>
 </form>
+<h2>myProperty</h2>
+<label th:text="${myProperty.id}"></label>
 </body>
 </html>
