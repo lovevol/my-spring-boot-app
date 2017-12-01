@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Time: 13:58
  */
 @Component
-//读取配置文件，提取其中的数据
+//读取配置文件，提取其中的数据，定义提取数据的前缀信息
 @ConfigurationProperties(prefix = "myproperty")
 public class MyProperty {
     private String id;
