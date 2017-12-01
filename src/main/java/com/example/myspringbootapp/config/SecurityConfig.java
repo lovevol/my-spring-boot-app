@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * Date: 2017-12-1
  * Time: 11:36
  */
+//根据配置信息动态选择是否加载本配置
 @Profile("production")
 @Configuration
 @EnableWebSecurity
