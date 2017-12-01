@@ -4,9 +4,13 @@ import com.example.myspringbootapp.repository.UserRepository;
 import com.example.myspringbootapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: liuhao
@@ -14,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Time: 16:02
  */
 @Controller
-@RequestMapping("/spring")
+@RequestMapping("/")
 public class MainController {
     private final UserRepository userRepository;
 
@@ -25,25 +29,18 @@ public class MainController {
 
     @RequestMapping("/index")
     public String index(){
-        return "index";
+        return "redirect:/getAll";
     }
     @RequestMapping("/add")
-    public  @ResponseBody String addUser(@RequestParam String name,
-                                         @RequestParam String email) {
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
+    public  String addUser(User user) {
         userRepository.save(user);
-        return "Saved";
+        return "redirect:/getAll";
     }
 
     @RequestMapping("/getAll")
-    public  @ResponseBody Iterable<User> getAll(){
-        return userRepository.findAll();
-    }
-
-    @RequestMapping("/error")
-    public String error(){
+    public  String getAll(Model model){
+        List<User> users = (List<User>) userRepository.findAll();
+        model.addAttribute("users",users);
         return "index";
     }
 }

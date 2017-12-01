@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
     <title>index</title>
 </head>
 <body>
-
+<h2>user-list</h2>
+<div th:unless="${#lists.isEmpty(users)}">
+    <table style="text-align: center">
+        <thead>
+            <tr>
+                <th th:text="Name"></th>
+                <th th:text="Email"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.name}">noName</td>
+                <td th:text="${user.email}">noEmail</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2>add-user</h2>
+<form method="POST" action="/add">
+    <label for="name">Name:</label>
+    <input type="text" name="name" size="50" id="name"/><br/>
+    <label for="email">Email:</label>
+    <input type="text" name="email" size="50" id="email"/><br/>
+    <input type="submit" value="add"/>
+</form>
 </body>
 </html>
