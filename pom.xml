@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>my-spring-boot-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<packaging>war</packaging>
 
 	<name>my-spring-boot-app</name>
@@ -64,6 +64,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>spring-boot</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
